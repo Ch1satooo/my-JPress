@@ -129,6 +129,18 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>io.jpress</groupId>
+            <artifactId>module-barrage-web</artifactId>
+            <version>5.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.jpress</groupId>
+            <artifactId>module-barrage-service-provider</artifactId>
+            <version>5.0</version>
+        </dependency>
+
 
 <!--        <dependency>-->
 <!--            <groupId>io.jpress</groupId>-->
@@ -198,6 +210,9 @@
                                 </resource>
                                 <resource>
                                     <directory>${basedir}/../module-form/module-form-web/src/main/webapp</directory>
+                                </resource>
+                                <resource>
+                                    <directory>${basedir}/../module-barrage/module-barrage-web/src/main/webapp</directory>
                                 </resource>
 <!--                                <resource>-->
 <!--                                    <directory>${basedir}/../jpress-addons/jpress-addon-keygen/src/main/webapp</directory>-->

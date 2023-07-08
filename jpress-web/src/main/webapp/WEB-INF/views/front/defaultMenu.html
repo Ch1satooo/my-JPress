@@ -21,6 +21,45 @@
         #call('_menuItem',menu,ulClass,liClass,aClass)
         #end
     </ul>
+
+    <!-- Right navbar links -->
+    <ul class="navbar-nav ml-auto">
+
+<!--        #@_header_admin_site()-->
+
+        #if(USER)
+            <!-- 头像信息 -->
+            <li class="nav-item dropdown">
+                <a class="nav-link" data-toggle="dropdown" href="javascript:;" style="display: flex;align-items: center;">
+                    <img src="#(USER.avatar ??)" class="img-circle" style="width: 25px;height:25px;margin-right: 5px"> #(USER.showName ??)
+                    <i class="fas fa-caret-down"></i>
+                </a>
+
+                <div class="dropdown-menu dropdown-menu-right">
+
+                    <a href="#(CPATH)/ucenter/index" class="dropdown-item" target="_blank">
+                        <i class="fas fa-home"></i> 用户中心
+                    </a>
+
+                    <div class="dropdown-divider"></div>
+                    <a href="#(CPATH)/ucenter/info" class="dropdown-item">
+                        <i class="fas fa-user"></i>  我的资料
+                    </a>
+
+                    <div class="dropdown-divider"></div>
+                    <a href="#(CPATH)/user/logout" class="dropdown-item">
+                        <i class="fas fa-sign-out-alt"></i> 退出登录
+                    </a>
+
+                </div>
+            </li>
+            <!-- 头像信息结束 -->
+        #else
+            <a href="/ucenter/login">登录/注册</a>
+        #end
+
+    </ul>
+
 </div>
 #end
 

@@ -1,0 +1,138 @@
+#@layout()
+
+#define script()
+<script>
+
+    function doDel(id) {
+        ajaxGet("/admin/barrage/barrage/doDel/" + id);
+    }
+
+</script>
+#end
+
+#define content()
+
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="row mb-2">
+                        <div class="col-sm-12">
+                            <h1>
+                                管理
+                                <small data-toggle="tooltip" title="" data-placement="right"
+                                       data-trigger="hover"><i class="nav-icon far fa-question-circle"></i></small>
+                                <small> 首页 / Barrage / 管理</small>
+                            </h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+
+        <div class="row">
+            <div class="col-12">
+                <div class="card card-outline card-primary">
+                    <div class="card-header with-border">
+
+                        <div class="row admin-search-panel">
+                            <div class="col-12">
+                                <a href="barrage/edit" class="btn btn-primary ">
+                                    <i class="fas fa-plus"></i> 新建
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body ">
+
+                        <table class="table table-striped">
+                            <tbody>
+                            <tr>
+                                <th style="width: 10px">
+	                                    <input class="tableCheckAll" type="checkbox"/>
+	                                </th>
+	                                <th>主键ID</th>
+	                                <th>子版本的弹幕id</th>
+	                                <th>slug</th>
+	                                <th>作者</th>
+	                                <th>内容</th>
+	                                <th>摘要</th>
+	                                <th>连接到(常用于某弹幕只是一个连接)</th>
+	                                <th>样式</th>
+	                                <th>用户ID</th>
+	                                <th>排序编号</th>
+	                                <th>状态</th>
+	                                <th>访问量</th>
+	                                <th>创建日期</th>
+	                                <th>最后更新日期</th>
+	                                <th>标识，通常用于对某几条弹幕进行标识，从而实现单独查询</th>
+	                                <th>SEO标题</th>
+	                                <th>SEO关键字</th>
+	                                <th>SEO描述信息</th>
+	                                <th>是否允许被搜索</th>
+	                                <th>json 扩展</th>
+	                                <th>站点ID</th>
+
+                            </tr>
+                            #for(entry : page.list)
+                            <tr>
+                                <td><input name="tableItem" type="checkbox" value="#(entry.id)" />
+                                </td>
+                                <td>
+                                    <strong>
+                                        <a href="#(CPATH)/admin/barrage/barrage/edit/#(entry.id)"> #(entry.id ??) </a>
+                                    </strong>
+                                    <div class="jp-action-card">
+                                        <div class="jp-action-body">
+                                            <a href="/admin/barrage/barrage/edit/#(entry.id)">编辑</a> |
+                                            <a href="javascript:;" class="red-action"
+                                               onclick="doDel('#(entry.id)')">删除</a>
+                                        </div>
+                                    </div>
+                                </td>
+
+	                                <td>#(entry.pid)</td>
+	                                <td>#(entry.slug)</td>
+	                                <td>#(entry.author)</td>
+	                                <td>#(entry.content)</td>
+	                                <td>#(entry.summary)</td>
+	                                <td>#(entry.link_to)</td>
+	                                <td>#(entry.style)</td>
+	                                <td>#(entry.user_id)</td>
+	                                <td>#(entry.order_number)</td>
+	                                <td>#(entry.status)</td>
+	                                <td>#(entry.view_count)</td>
+	                                <td>#(entry.created)</td>
+	                                <td>#(entry.modified)</td>
+	                                <td>#(entry.flag)</td>
+	                                <td>#(entry.meta_title)</td>
+	                                <td>#(entry.meta_keywords)</td>
+	                                <td>#(entry.meta_description)</td>
+	                                <td>#(entry.with_allow_search)</td>
+	                                <td>#(entry.options)</td>
+	                                <td>#(entry.site_id)</td>
+                            </tr>
+                            #end
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.card-body -->
+                    <div class="card-footer">
+                        <div class="row">
+                            <div class="col-sm-12">
+                            	 #@_paginate()
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.box -->
+            </div>
+        </div>
+
+    </section>
+#end

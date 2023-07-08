@@ -7,6 +7,12 @@
     <groupId>io.jpress</groupId>
     <artifactId>parent</artifactId>
     <packaging>pom</packaging>
+    <dependencies>
+        <dependency>
+            <groupId>io.jboot</groupId>
+            <artifactId>jboot</artifactId>
+        </dependency>
+    </dependencies>
     <version>5.0</version>
 
     <modules>
@@ -26,6 +32,7 @@
         <module>module-product</module>
         <module>module-job</module>
         <module>module-form</module>
+        <module>module-barrage</module>
 
         <module>starter</module>
         <module>starter-tomcat</module>

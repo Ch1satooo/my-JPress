@@ -23,13 +23,13 @@ package io.jpress.codegen;
 public class Tester {
 
 
-    private static String dbUrl = "jdbc:mysql://127.0.0.1:3306/jpress3";
+    private static String dbUrl = "jdbc:mysql://127.0.0.1:3306/jpress";
     private static String dbUser = "root";
-    private static String dbPassword = "";
+    private static String dbPassword = "123qwe";
 
 
-    private static String moduleName = "page";
-    private static String dbTables = "single_page";
+    private static String moduleName = "barrage";
+    private static String dbTables = "barrage";
     private static String modelPackage = "io.jpress.module.page.model";
     private static String servicePackage = "io.jpress.module.page.service";
 
