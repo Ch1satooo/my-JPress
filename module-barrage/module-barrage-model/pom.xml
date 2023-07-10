@@ -17,6 +17,18 @@
             <groupId>io.jboot</groupId>
             <artifactId>jboot</artifactId>
         </dependency>
+        <dependency>
+            <groupId>io.jpress</groupId>
+            <artifactId>jpress-commons</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.jpress</groupId>
+            <artifactId>jpress-model</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.jpress</groupId>
+            <artifactId>jpress-core</artifactId>
+        </dependency>
     </dependencies>
 
 

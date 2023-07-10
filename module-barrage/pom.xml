@@ -24,12 +24,8 @@
     <modules>
         <module>module-barrage-model</module>
         <module>module-barrage-web</module>
-        <module>module-barrage-search</module>
         <module>module-barrage-service</module>
         <module>module-barrage-service-provider</module>
-        <module>module-barrage-search-db</module>
-        <module>module-barrage-search-lucene</module>
-        <module>module-barrage-search-es</module>
     </modules>
 
     <build>

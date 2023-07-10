@@ -47,7 +47,7 @@ public class BarrageModuleInitializer extends JbootAppListenerBase implements Mo
 		MenuGroup menuGroup = new MenuGroup();
         menuGroup.setId("barrage");
         menuGroup.setText("弹幕");
-        menuGroup.setIcon("<i class=\"far fa-poll-h\" ></i>");
+        menuGroup.setIcon("<i class=\"fa fa-list-alt\"></i>");
         menuGroup.setOrder(99);
         adminMenus.add(menuGroup);
     }

@@ -1,3 +1,4 @@
+<!--后台弹幕管理的编辑/新增弹幕列表-->
 #@layout()
 
 #define content()
@@ -35,18 +36,10 @@
                         <div class="card-body ">
 	                                <input type="hidden" id="entryId" name="barrage.id" value="#(barrage.id ??)">
 		                            <div class="form-group row">
-		                                <label class="col-sm-2 col-form-label">子版本的弹幕id</label>
+		                                <label class="col-sm-2 col-form-label">用户ID</label>
 		                                <div class="col-sm-6">
 
-										   <input type="text" name="barrage.pid" class="form-control" value="#(barrage.pid ??)"
-		                                           placeholder="">
-		                                </div>
-		                            </div>
-		                            <div class="form-group row">
-		                                <label class="col-sm-2 col-form-label">slug</label>
-		                                <div class="col-sm-6">
-
-										   <input type="text" name="barrage.slug" class="form-control" value="#(barrage.slug ??)"
+										   <input type="text" name="barrage.user_id" class="form-control" value="#(barrage.user_id ??)"
 		                                           placeholder="">
 		                                </div>
 		                            </div>
@@ -67,38 +60,6 @@
 		                                </div>
 		                            </div>
 		                            <div class="form-group row">
-		                                <label class="col-sm-2 col-form-label">摘要</label>
-		                                <div class="col-sm-6">
-
-										   <input type="text" name="barrage.summary" class="form-control" value="#(barrage.summary ??)"
-		                                           placeholder="">
-		                                </div>
-		                            </div>
-		                            <div class="form-group row">
-		                                <label class="col-sm-2 col-form-label">连接到(常用于某弹幕只是一个连接)</label>
-		                                <div class="col-sm-6">
-
-										   <input type="text" name="barrage.link_to" class="form-control" value="#(barrage.link_to ??)"
-		                                           placeholder="">
-		                                </div>
-		                            </div>
-		                            <div class="form-group row">
-		                                <label class="col-sm-2 col-form-label">样式</label>
-		                                <div class="col-sm-6">
-
-										   <input type="text" name="barrage.style" class="form-control" value="#(barrage.style ??)"
-		                                           placeholder="">
-		                                </div>
-		                            </div>
-		                            <div class="form-group row">
-		                                <label class="col-sm-2 col-form-label">用户ID</label>
-		                                <div class="col-sm-6">
-
-										   <input type="text" name="barrage.user_id" class="form-control" value="#(barrage.user_id ??)"
-		                                           placeholder="">
-		                                </div>
-		                            </div>
-		                            <div class="form-group row">
 		                                <label class="col-sm-2 col-form-label">排序编号</label>
 		                                <div class="col-sm-6">
 
@@ -115,83 +76,11 @@
 		                                </div>
 		                            </div>
 		                            <div class="form-group row">
-		                                <label class="col-sm-2 col-form-label">访问量</label>
-		                                <div class="col-sm-6">
-
-										   <input type="text" name="barrage.view_count" class="form-control" value="#(barrage.view_count ??)"
-		                                           placeholder="">
-		                                </div>
-		                            </div>
-		                            <div class="form-group row">
-		                                <label class="col-sm-2 col-form-label">创建日期</label>
+		                                <label class="col-sm-2 col-form-label">发布时间</label>
 		                                <div class="col-sm-6">
 
 										    <input type="text" class="form-control datetime" placeholder="点击选择"
 		                       						name="barrage.created" value="#date(barrage.created ?? now,'yyyy-MM-dd')" >
-		                                </div>
-		                            </div>
-		                            <div class="form-group row">
-		                                <label class="col-sm-2 col-form-label">最后更新日期</label>
-		                                <div class="col-sm-6">
-
-										    <input type="text" class="form-control datetime" placeholder="点击选择"
-		                       						name="barrage.modified" value="#date(barrage.modified ?? now,'yyyy-MM-dd')" >
-		                                </div>
-		                            </div>
-		                            <div class="form-group row">
-		                                <label class="col-sm-2 col-form-label">标识，通常用于对某几条弹幕进行标识，从而实现单独查询</label>
-		                                <div class="col-sm-6">
-
-										   <input type="text" name="barrage.flag" class="form-control" value="#(barrage.flag ??)"
-		                                           placeholder="">
-		                                </div>
-		                            </div>
-		                            <div class="form-group row">
-		                                <label class="col-sm-2 col-form-label">SEO标题</label>
-		                                <div class="col-sm-6">
-
-										   <input type="text" name="barrage.meta_title" class="form-control" value="#(barrage.meta_title ??)"
-		                                           placeholder="">
-		                                </div>
-		                            </div>
-		                            <div class="form-group row">
-		                                <label class="col-sm-2 col-form-label">SEO关键字</label>
-		                                <div class="col-sm-6">
-
-										   <input type="text" name="barrage.meta_keywords" class="form-control" value="#(barrage.meta_keywords ??)"
-		                                           placeholder="">
-		                                </div>
-		                            </div>
-		                            <div class="form-group row">
-		                                <label class="col-sm-2 col-form-label">SEO描述信息</label>
-		                                <div class="col-sm-6">
-
-										   <input type="text" name="barrage.meta_description" class="form-control" value="#(barrage.meta_description ??)"
-		                                           placeholder="">
-		                                </div>
-		                            </div>
-		                            <div class="form-group row">
-		                                <label class="col-sm-2 col-form-label">是否允许被搜索</label>
-		                                <div class="col-sm-6">
-
-										   <input type="checkbox" class="switchery" data-for="barrage_with_allow_search" #checkedIf(barrage.with_allow_search ??)>
-                                           <input type="hidden" id="barrage_with_allow_search" name="barrage.with_allow_search">
-		                                </div>
-		                            </div>
-		                            <div class="form-group row">
-		                                <label class="col-sm-2 col-form-label">json 扩展</label>
-		                                <div class="col-sm-6">
-
-										   <input type="text" name="barrage.options" class="form-control" value="#(barrage.options ??)"
-		                                           placeholder="">
-		                                </div>
-		                            </div>
-		                            <div class="form-group row">
-		                                <label class="col-sm-2 col-form-label">站点ID</label>
-		                                <div class="col-sm-6">
-
-										   <input type="text" name="barrage.site_id" class="form-control" value="#(barrage.site_id ??)"
-		                                           placeholder="">
 		                                </div>
 		                            </div>
 
