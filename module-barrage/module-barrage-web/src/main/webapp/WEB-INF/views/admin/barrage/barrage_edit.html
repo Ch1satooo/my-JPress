@@ -29,9 +29,10 @@
             <div class="col-12">
                 <div class="card card-outline card-primary">
                     <form class=" form-setting autoAjaxSubmit" autocomplete="off"
-                          action="/admin/barrage/barrage/doSave"
-                          ok-function-href="/admin/barrage/barrage/list"
+                          action="/admin/barrage/doSave"
+                          ok-function-href="/admin/barrage/list"
                           method="POST">
+						<!--这注意之前的 ok-function-href 是 /admin/barrage/barrage/list-->
 
                         <div class="card-body ">
 	                                <input type="hidden" id="entryId" name="barrage.id" value="#(barrage.id ??)">

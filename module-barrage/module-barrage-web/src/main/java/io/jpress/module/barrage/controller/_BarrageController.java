@@ -29,7 +29,7 @@ import io.jpress.web.base.AdminControllerBase;
 import java.util.Date;
 
 
-@RequestMapping(value = "/admin/barrage/barrage", viewPath = JPressConsts.DEFAULT_ADMIN_VIEW)
+@RequestMapping(value = "/admin/barrage", viewPath = JPressConsts.DEFAULT_ADMIN_VIEW)
 public class _BarrageController extends AdminControllerBase {
 
     @Inject
