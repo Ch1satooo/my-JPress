@@ -174,5 +174,7 @@ public interface BarrageService  {
      */
     public Page<Barrage> paginateByColumns(int page, int pageSize, Columns columns, String orderBy);
 
+    boolean doChangeStatus(long id, String status);
 
+    long findCountByStatus(String status);
 }

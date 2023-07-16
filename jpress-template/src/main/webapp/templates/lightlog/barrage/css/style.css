@@ -1,11 +1,3 @@
-*{
-	padding: 0;
-	margin: 0;
-}
-.barrage-body{
-	height: 100%;
-	user-select:none;
-}
 .barrage-screen{
 	overflow: hidden;
 	position: relative;
@@ -36,6 +28,7 @@
 	border: none;
 	border-radius: 8px 0 0 8px;
 }
+/*barrage-s_show内部的div才会受影响*/
 .barrage-s_show div{
 	position: absolute;
 	font-size: 18px;

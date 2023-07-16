@@ -8,8 +8,13 @@ var oText = document.querySelector('.barrage-text');
 var time = 0;//上一次你发送的时间
 var time1 = 0;
 //点击发送弹幕
-oBtn.onclick = function(){//鼠标点击事件
+oBtn.onclick = async function(){//鼠标点击事件
 	//oBtn.style.backgroundColor = randomColor();//按钮背景颜色变换
+
+	// const text = oText.value;
+	// //AJEX提交
+	// const res = await fetch('/barrage/add')
+
 	time1 = new Date();
 	oBtn.style.color = randomColor();//按钮字体颜色变换
 	if(time1 - time > 3000){//2次发送的时间必须大于2秒

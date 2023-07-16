@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.jpress.module.barrage.controller;
+package io.jpress.module.barrage.controller.admin;
 
 import com.jfinal.aop.Inject;
 import com.jfinal.kit.Ret;
@@ -25,6 +25,7 @@ import io.jpress.JPressConsts;
 import io.jpress.core.menu.annotation.AdminMenu;
 import io.jpress.module.barrage.model.Barrage;
 import io.jpress.module.barrage.service.BarrageService;
+import io.jpress.service.MenuService;
 import io.jpress.web.base.AdminControllerBase;
 import java.util.Date;
 
@@ -34,8 +35,11 @@ public class _BarrageController extends AdminControllerBase {
 
     @Inject
     private BarrageService service;
+    @Inject
+    private MenuService menuService;
 
-    @AdminMenu(text = "管理", groupId = "barrage")
+
+    @AdminMenu(text = "管理", groupId = "barrage", order = 0)
     public void index() {
         Page<Barrage> entries=service.paginate(getPagePara(), 10);
         setAttr("page", entries);
@@ -69,5 +73,9 @@ public class _BarrageController extends AdminControllerBase {
         service.batchDeleteByIds(getParaSet("ids").toArray());
         renderOkJson();
     }
+
+
+    @AdminMenu(text = "设置", groupId = "barrage", order = 1)
+    public void setting(){ render("barrage/setting.html"); }
 
 }

@@ -16,10 +16,8 @@
 package io.jpress.web.base;
 
 import com.jfinal.aop.Before;
-import io.jpress.web.interceptor.CSRFInterceptor;
-import io.jpress.web.interceptor.UserCenterInterceptor;
-import io.jpress.web.interceptor.UserInterceptor;
-import io.jpress.web.interceptor.UserMustLoginedInterceptor;
+import com.jfinal.core.NotAction;
+import io.jpress.web.interceptor.*;
 
 /**
  * @author Michael Yang 杨福海 （fuhai999@gmail.com）
@@ -33,7 +31,9 @@ import io.jpress.web.interceptor.UserMustLoginedInterceptor;
         UserCenterInterceptor.class
 })
 public abstract class UcenterControllerBase extends ControllerBase {
-
-
+    @NotAction
+    public void setPaginateSizeSpacing(int spacing) {
+        setAttr(UserCenterInterceptor.ATTR_PAGINATE_SPACING, spacing);
+    }
 
 }

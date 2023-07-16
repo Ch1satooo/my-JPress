@@ -28,6 +28,7 @@ import io.jpress.core.menu.MenuManager;
  */
 public class UserCenterInterceptor implements Interceptor {
 
+    public static final String ATTR_PAGINATE_SPACING = "_PAGINATE_SPACING";
     @Override
     public void intercept(Invocation inv) {
 
@@ -40,6 +41,10 @@ public class UserCenterInterceptor implements Interceptor {
 
 
         inv.getController().setAttr("user", UserInterceptor.getThreadLocalUser());
+
+        //设置分页下拉菜单的间隔数据
+        inv.getController().setAttr(ATTR_PAGINATE_SPACING,10);
+
 
         inv.invoke();
     }

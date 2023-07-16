@@ -54,7 +54,6 @@
                             <a href="?">全部 (#(totalCount ??))</a> |
                             <a href="?status=normal">已发布 (#(normalCount ?? 0))</a> |
                             <a href="?status=unaudited">待审核 (#(unauditedCount ?? 0))</a> |
-                            <a href="?status=draft">垃圾箱 (#(draftCount ?? 0))</a> |
                             <a href="?status=trash" style="color: #a00">垃圾箱 (#(trashCount ?? 0))</a>
                         </div>
                     </div>
@@ -164,7 +163,7 @@
                                 <td>#date(comment.created)</td>
                             </tr>
                             #else
-                            <tr class="nodata"><td colspan="999">暂无数据</td> </tr>
+                            <tr class="odata"><td colspan="999">暂无数据</td> </tr>
                             #end
 
                             </tbody>

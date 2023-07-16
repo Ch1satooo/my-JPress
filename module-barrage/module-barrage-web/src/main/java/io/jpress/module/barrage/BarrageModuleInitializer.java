@@ -16,6 +16,7 @@
 package io.jpress.module.barrage;
 
 import com.jfinal.core.Controller;
+import com.jfinal.template.Engine;
 import io.jboot.Jboot;
 import io.jboot.core.listener.JbootAppListenerBase;
 import io.jboot.db.model.Columns;
@@ -52,6 +53,9 @@ public class BarrageModuleInitializer extends JbootAppListenerBase implements Mo
         adminMenus.add(menuGroup);
     }
 
-
+    @Override
+    public void onEngineConfig(Engine engine) {
+        engine.addSharedFunction("/WEB-INF/views/commons/barrage/defaultBarragePage.html");
+    }
 
 }
