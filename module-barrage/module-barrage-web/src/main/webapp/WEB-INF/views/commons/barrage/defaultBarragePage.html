@@ -14,11 +14,11 @@
         <div class="magictime twisterInUp">欢迎使用彩色星空弹幕</div>
 
 <!--        如果想使用barrage.list就要去directive里面进行声明-->
-        #barrageList()
-        #for(barrage : barrageList.list ??)
+        #barrages()
+        #(barrages)
+        #for(barrage : barrages ??)
             #(barrage.content)
             <div class="magictime twisterInUp">#(barrage.content)</div>
-        #end
         #end
     </div>
 </form>

@@ -13,7 +13,7 @@ import io.jpress.web.base.TemplateControllerBase;
 
 import java.util.List;
 
-@JFinalDirective("barrageList")
+@JFinalDirective("barrages")
 public class BarragePageDirective extends JbootDirectiveBase {
 
     private BarrageService barrageService;
@@ -23,12 +23,12 @@ public class BarragePageDirective extends JbootDirectiveBase {
 
         TemplateControllerBase controller = (TemplateControllerBase) JbootControllerContext.get();
 
-        Barrage barrage = controller.getAttr("barrage");
+        List<Barrage> barrages = controller.getAttr("barrages");
 //        Article article = controller.getAttr("article");
-        if (barrage != null) {
-            List<Barrage> barrageList = barrageService.findAll();
-            scope.setGlobal("barrageList", barrageList);
-            renderBody(env, scope, writer);
-        }
+        if (barrages != null) {
+        //List<Barrage> barrageList = barrageService.findAll();
+        scope.setGlobal("barrages", barrages);
+        renderBody(env, scope, writer);
     }
+}
 }

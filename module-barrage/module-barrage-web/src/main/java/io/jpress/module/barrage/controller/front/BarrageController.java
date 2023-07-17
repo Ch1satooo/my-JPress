@@ -23,9 +23,9 @@ public class BarrageController extends TemplateControllerBase {
     private OptionService optionService;
 
     public void index() {
-        List<Barrage> barrage = barrageService.findAll();
+        List<Barrage> barrages = barrageService.findAll();
 
-        setAttr("barrage", barrage);
+        setAttr("barrages", barrages);
         render("barrage.html");
     }
 
