@@ -60,5 +60,18 @@ public class  Barrage extends BaseBarrage<Barrage> {
         JsoupUtils.clean(this, "content");
         return super.update();
     }
+
+    public boolean isNormal() {
+        return STATUS_NORMAL.equals(getStatus());
+    }
+
+    public boolean isUnaudited() {
+        return STATUS_UNAUDITED.equals(getStatus());
+    }
+
+    public boolean isTrash() {
+        return STATUS_TRASH.equals(getStatus());
+    }
+
 }
 

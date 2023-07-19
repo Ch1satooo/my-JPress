@@ -18,11 +18,11 @@ oBtn.onclick = async function(){//鼠标点击事件
 	time1 = new Date();
 	oBtn.style.color = randomColor();//按钮字体颜色变换
 	if(time1 - time > 3000){//2次发送的时间必须大于2秒
-		var oDiv = document.createElement('div');//创建div
-		oDiv.innerHTML = oText.value;//添加弹幕内容
-		oDiv.className = 'magictime twisterInUp';//弹幕特效
-		oShow.appendChild(oDiv);//添加一个子节点 
-		init(oDiv);//初始化
+		// var oDiv = document.createElement('div');//创建div
+		// oDiv.innerHTML = oText.value;//添加弹幕内容
+		// oDiv.className = 'magictime twisterInUp';//弹幕特效
+		// oShow.appendChild(oDiv);//添加一个子节点
+		//init(oDiv);//初始化
 		oText.value = '';
 		time = time1;
 		//console.log(time);

@@ -1,26 +1,25 @@
 #define defaultBarragePage()
 
-<form class=barrage-screen" action="#(CPATH)#(SPATH)/barrage/postBarrage" id="jpress-barrage-form" method="post" autocomplete="off">
+<form class=barrage-screen" action="#(CPATH)/barrage/postBarrage" id="jpress-barrage-form" method="post" autocomplete="off">
     <div class="barrage-landscape"></div>
     <div class="barrage-filter"></div>
     <canvas id="canvas"></canvas>
     <div class="barrage-send">
         <div class="barrage-input clearfix">
-            <textarea placeholder="biubiubiu ~" class="barrage-text" name="content" rows="1"></textarea>
+            <input type="text" placeholder="biubiubiu ~" class="barrage-text" name="content">
             <button type="submit" class="barrage-btn">发送弹幕</button>
         </div>
     </div>
     <div class="barrage-s_show">
         <div class="magictime twisterInUp">欢迎使用彩色星空弹幕</div>
 
-<!--        如果想使用barrage.list就要去directive里面进行声明-->
-        #barrages()
-        #(barrages)
+<!--        如果想使用barrages 就要去directive里面进行声明 或者在controller 里面进行赋值-->
+
         #for(barrage : barrages ??)
-            #(barrage.content)
             <div class="magictime twisterInUp">#(barrage.content)</div>
         #end
     </div>
+    <span class="clearfix"></span>
 </form>
 
 #end

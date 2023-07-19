@@ -1083,6 +1083,53 @@ function initBsFormImageComponent() {
 
 }
 
+function initBarrageComponent() {
+
+
+    $('#jpress-barrage-form').on('submit', function () {
+        var barrageContent = $('#jpress-barrage-form').find('textarea[name="content"]').val();
+        if (!barrageContent || barrageContent == "") {
+            alert("弹幕内容不能为空");
+            return false;
+        }
+
+        $(this).ajaxSubmit({
+            type: "post",
+            success: function (data) {
+                if (data.state == "ok") {
+
+                    if (data.html) {
+                        $('.barrage-text input').val('');
+                    } else {
+                        alert('弹幕发布成功');
+                        location.reload();
+                    }
+                }
+                //评论失败
+                else {
+                    alert('发送失败：' + data.message);
+
+                    //用户未登录
+                    if (data.errorCode == 9 && data.gotoUrl) {
+                        location.href = data.gotoUrl;
+                    }
+
+                    //其他
+                    else {
+                        $('.comment-textarea textarea').val('');
+                        $('.comment-textarea textarea').focus();
+                    }
+                }
+            },
+            error: function () {
+                alert("网络错误，请稍后重试");
+            }
+        });
+        return false;
+    });
+
+}
+
 
 $(document).ready(function () {
 

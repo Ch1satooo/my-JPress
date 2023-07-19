@@ -18,6 +18,8 @@ package io.jpress.module.barrage.controller.admin;
 import com.jfinal.aop.Inject;
 import com.jfinal.kit.Ret;
 import com.jfinal.plugin.activerecord.Page;
+import io.jboot.db.model.Columns;
+import io.jboot.utils.StrUtil;
 import io.jboot.web.controller.annotation.RequestMapping;
 import io.jboot.web.validate.EmptyValidate;
 import io.jboot.web.validate.Form;
@@ -34,48 +36,88 @@ import java.util.Date;
 public class _BarrageController extends AdminControllerBase {
 
     @Inject
-    private BarrageService service;
+    private BarrageService barrageService;
     @Inject
     private MenuService menuService;
 
 
     @AdminMenu(text = "管理", groupId = "barrage", order = 0)
-    public void index() {
-        Page<Barrage> entries=service.paginate(getPagePara(), 10);
-        setAttr("page", entries);
+    public void list() {
+        String status = getPara("status");
+
+        Columns columns = Columns.create()
+                .eq("article_id", getParaToLong("articleId"))
+                .eq("user_id", getParaToLong("userId"))
+                .likeAppendPercent("content", getPara("keyword"));
+
+        Page<Barrage> page =
+                StrUtil.isBlank(status)
+                        ? barrageService._paginateWithoutTrash(getPagePara(), getPageSizePara(), columns)
+                        : barrageService._paginateByStatus(getPagePara(), getPageSizePara(), columns, status);
+
+        setAttr("page", page);
+
+        long unauditedCount = barrageService.findCountByStatus(Barrage.STATUS_UNAUDITED);
+        long trashCount = barrageService.findCountByStatus(Barrage.STATUS_TRASH);
+        long normalCount = barrageService.findCountByStatus(Barrage.STATUS_NORMAL);
+
+        setAttr("unauditedCount", unauditedCount);
+        setAttr("trashCount", trashCount);
+        setAttr("normalCount", normalCount);
+        setAttr("totalCount", unauditedCount + trashCount + normalCount);
+
+
+//        Page<Barrage> entries = barrageService.paginate(getPagePara(), 10);
+//        setAttr("page", entries);
         render("barrage/barrage_list.html");
     }
 
 
     public void edit() {
+        //获取要查询的弹幕ID
         int entryId = getParaToInt(0, 0);
+        //按ID数据库查询
+        Barrage entry = entryId > 0 ? barrageService.findById(entryId) : null;
 
-        Barrage entry = entryId > 0 ? service.findById(entryId) : null;
         setAttr("barrage", entry);
+        //set当前时间到 model
         set("now",new Date());
         render("barrage/barrage_edit.html");
     }
 
     public void doSave() {
         Barrage entry = getModel(Barrage.class,"barrage");
-        service.saveOrUpdate(entry);
+        barrageService.saveOrUpdate(entry);
         renderJson(Ret.ok().set("id", entry.getId()));
     }
 
-
     public void doDel() {
         Long id = getIdPara();
-        render(service.deleteById(id) ? Ret.ok() : Ret.fail());
+        render(barrageService.deleteById(id) ? Ret.ok() : Ret.fail());
     }
 
     @EmptyValidate(@Form(name = "ids"))
     public void doDelByIds() {
-        service.batchDeleteByIds(getParaSet("ids").toArray());
+        barrageService.batchDeleteByIds(getParaSet("ids").toArray());
         renderOkJson();
     }
 
 
     @AdminMenu(text = "设置", groupId = "barrage", order = 1)
     public void setting(){ render("barrage/setting.html"); }
+
+    public void doTrash() {
+        Long id = getIdPara();
+        render(barrageService.doChangeStatus(id, Barrage.STATUS_TRASH) ? OK : FAIL);
+    }
+
+    public void doNormal() {
+        Long id = getIdPara();
+        render(barrageService.doChangeStatus(id, Barrage.STATUS_NORMAL) ? OK : FAIL);
+    }
+
+    public void doChangeStatus(Long id, String status) {
+        render(barrageService.doChangeStatus(id, status) ? OK : FAIL);
+    }
 
 }

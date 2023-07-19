@@ -177,4 +177,9 @@ public interface BarrageService  {
     boolean doChangeStatus(long id, String status);
 
     long findCountByStatus(String status);
+
+    Page<Barrage> _paginateWithoutTrash(int page, int pagesize, Columns columns);
+
+    Page<Barrage> _paginateByStatus(int page, int pagesize, Columns columns, String status);
+
 }
