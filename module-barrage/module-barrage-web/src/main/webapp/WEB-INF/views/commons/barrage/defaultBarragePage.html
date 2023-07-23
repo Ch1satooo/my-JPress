@@ -1,6 +1,7 @@
 #define defaultBarragePage()
 
-<form class=barrage-screen" action="#(CPATH)/barrage/postBarrage" id="jpress-barrage-form" method="post" autocomplete="off">
+#if(option("barrage_enable","true"))
+<form class=barrage-screen" action="#(CPATH)#(SPATH)/barrage/postBarrage" id="jpress-barrage-form" method="post" autocomplete="off">
     <div class="barrage-landscape"></div>
     <div class="barrage-filter"></div>
     <canvas id="canvas"></canvas>
@@ -22,4 +23,5 @@
     <span class="clearfix"></span>
 </form>
 
+#end
 #end

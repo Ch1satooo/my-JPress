@@ -15,6 +15,7 @@ import io.jpress.service.UserService;
 import io.jpress.web.base.TemplateControllerBase;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -32,6 +33,14 @@ public class BarrageController extends TemplateControllerBase {
 
     public void index() {
         List<Barrage> barrages = barrageService.findAll();
+
+        Iterator<Barrage> it = barrages.iterator();
+        while (it.hasNext()){
+            Barrage barrage = it.next();
+            if (!barrage.isNormal()){
+                it.remove();
+            }
+        }
 
         setAttr("barrages", barrages);
         render("barrage.html");

@@ -46,7 +46,6 @@ public class _BarrageController extends AdminControllerBase {
         String status = getPara("status");
 
         Columns columns = Columns.create()
-                .eq("article_id", getParaToLong("articleId"))
                 .eq("user_id", getParaToLong("userId"))
                 .likeAppendPercent("content", getPara("keyword"));
 

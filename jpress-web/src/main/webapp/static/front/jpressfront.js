@@ -1087,8 +1087,10 @@ function initBarrageComponent() {
 
 
     $('#jpress-barrage-form').on('submit', function () {
-        var barrageContent = $('#jpress-barrage-form').find('textarea[name="content"]').val();
+        var barrageContent = $('#jpress-barrage-form').find('input[name="content"]').val();
+
         if (!barrageContent || barrageContent == "") {
+            console.log("empty");
             alert("弹幕内容不能为空");
             return false;
         }
@@ -1169,5 +1171,7 @@ $(document).ready(function () {
     /*图片组件*/
     initBsFormImageComponent()
 
+    // /*弹幕表单点击事件*/
+    // initBarrageComponent()
 
 });
